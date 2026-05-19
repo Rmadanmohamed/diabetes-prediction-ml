@@ -1,0 +1,13 @@
+{
+  "repo": "diabetes-prediction-ml",
+  "title": "Diabetes Prediction Machine Learning",
+  "category": "Medical-AI-Projects",
+  "description": "A set of notebooks for diabetes outcome prediction using classical ML models and model comparison workflows.",
+  "topics": [
+    "machine-learning",
+    "medical-ai",
+    "classification",
+    "scikit-learn",
+    "lightgbm"
+  ]
+}
