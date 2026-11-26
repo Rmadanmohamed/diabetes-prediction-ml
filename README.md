@@ -1,55 +1,65 @@
 # Diabetes Prediction Machine Learning
 
-## Overview
-A set of notebooks for diabetes outcome prediction using classical ML models and model comparison workflows.
+## Overview and problem statement
 
-## Problem Statement
-Diabetes risk prediction needs transparent baselines that can compare model families on structured patient features.
+Compare structured-data diabetes outcome classification approaches for educational and research use. The notebooks cover exploratory analysis, a logistic regression baseline, cross-validation and hyperparameter search.
 
-## Features
-- EDA on diabetes dataset
-- Model comparison workflow
-- Baseline logistic regression implementation
+## Technology stack and prerequisites
 
-## Tech Stack
-- Python
-- Pandas
-- Scikit-learn
-- LightGBM
-- Matplotlib
-- Seaborn
+Python 3 and a notebook runtime are required (exact Python version unspecified). [requirements.txt](requirements.txt) declares lightgbm, matplotlib, numpy, pandas, scikit-learn, seaborn, statsmodels; no exact versions are pinned. Additional imports not directly declared: missingno, scipy, xgboost. Local Jupyter must be installed separately. No GPU requirement is documented.
 
-## Dataset
-- diabetes.csv
+## Project structure
 
-## Models / Algorithms
-- Logistic Regression
-- KNN
-- SVM
-- Decision Tree
-- Random Forest
-- LightGBM
+- [diabetes-classification-baseline.ipynb](notebooks/diabetes-classification-baseline.ipynb) — notebook source.
+- [diabetes-logistic-regression-demo.ipynb](notebooks/diabetes-logistic-regression-demo.ipynb) — notebook source.
+- [diabetes-prediction-ml-comparison.ipynb](notebooks/diabetes-prediction-ml-comparison.ipynb) — notebook source.
+- [requirements.txt](requirements.txt) — dependencies.
+- [LICENSE](LICENSE) — repository license, separate from dataset rights.
 
-## Results
-The source contains accuracy, classification-report, confusion-matrix, MSE, and R2 evaluation code. Exact final metrics should be read from the notebooks after rerun.
+## Dataset and preprocessing
 
-## Project Structure
-- notebooks/
-  - diabetes-classification-baseline.ipynb
-  - diabetes-logistic-regression-demo.ipynb
-  - diabetes-prediction-ml-comparison.ipynb
+Supply `diabetes.csv` (not bundled; origin and license unspecified). Baseline and comparison use an `Outcome` column; the logistic demo explicitly assigns nine column names, uses pregnancy count, insulin, BMI, age, glucose, blood pressure and pedigree as predictors and `label` as target. Ensure the header format matches each notebook. The comparison replaces selected zeros with missing values, imputes medians, handles outliers, derives BMI/insulin/glucose categories and uses robust scaling.
 
-## How to Run
-- `pip install -r requirements.txt`
-- `jupyter notebook notebooks/diabetes-prediction-ml-comparison.ipynb`
+## Model and workflow
 
-## Screenshots / Demo
-Screenshots or demo media can be added after deployment.
+The logistic demo uses a 70/30 split (seed 1) and reports accuracy, classification report and confusion matrix. The comparison includes 10-fold accuracy comparisons for logistic regression, KNN, decision tree, random forest, SVC, gradient boosting and LightGBM, plus grid searches including XGBoost. Some labels named XGB actually refer to scikit-learn gradient boosting. The baseline notebook primarily performs EDA.
 
-## Future Improvements
-- Add clean dataset download instructions
-- Track experiment results in a table
-- Package the best model for inference
+## Installation and execution
+
+```bash
+git clone https://github.com/Rmadanmohamed/diabetes-prediction-ml.git
+cd diabetes-prediction-ml
+python -m venv .venv
+```
+
+Activate with `source .venv/bin/activate` (Linux/macOS) or `.venv\Scripts\Activate.ps1` (Windows PowerShell).
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install jupyter missingno scipy xgboost
+jupyter notebook notebooks/diabetes-classification-baseline.ipynb
+```
+
+You can also open the notebooks in Google Colab. For local execution, adjust Colab-specific data paths in a local working copy and place data at the expected paths. Dependencies are not locked and a clean run has not been verified.
+
+## Environment variables
+
+No environment variables are required by the reviewed notebook code. Data paths are set within cells.
+
+## Usage, evaluation and limitations
+
+Open each notebook separately and run the relevant cells. The comparison notebook expects `/content/diabetes.csv`; the other two use relative paths. No saved numeric metrics were found. The comparison uses outcome-conditioned imputation and preprocessing before cross-validation, which can leak target information; reported scores after rerunning are not independent clinical validation. Use a leakage-safe pipeline and external validation before interpreting performance. Not a substitute for professional medical diagnosis.
+
+## Testing and validation
+
+No automated test suite is included. Run the relevant notebook cells with the required dataset and inspect the generated outputs. Training and tests were not executed during this documentation audit.
+
+## Screenshots and demo
+
+No standalone screenshots or verified live demo were found. Visualizations are generated by executing notebook cells.
 
 ## Author
-Ramadan Mohamed Hassan
+
+**Ramadan Mohamed Hassan** — AI Engineer | AI Researcher | AI Automation | LLM & RAG Systems | Machine Learning
+
+[Portfolio](https://ramadan-ai-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/ramadan-mohamed-89085a366/) · [GitHub](https://github.com/Rmadanmohamed) · [Email](mailto:ramadanmohameddd3@gmail.com)
