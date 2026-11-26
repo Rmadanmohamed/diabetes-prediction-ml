@@ -63,3 +63,9 @@ No standalone screenshots or verified live demo were found. Visualizations are g
 **Ramadan Mohamed Hassan** — AI Engineer | AI Researcher | AI Automation | LLM & RAG Systems | Machine Learning
 
 [Portfolio](https://ramadan-ai-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/ramadan-mohamed-89085a366/) · [GitHub](https://github.com/Rmadanmohamed) · [Email](mailto:ramadanmohameddd3@gmail.com)
+
+## Remediation validation
+
+Fixes leading indentation in the baseline loading cell and makes the original CSV configurable. The comparison notebook's outcome-conditioned imputation and cross-validation remain unvalidated; do not interpret its old metrics as independent evaluation.
+
+Run the scoped synthetic check with `python tests/regression.py` after installing its CI dependencies. Prior notebook outputs were cleared because they predate the correction.
